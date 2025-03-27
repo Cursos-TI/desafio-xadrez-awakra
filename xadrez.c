@@ -29,7 +29,7 @@ int main()
     // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
     // Inclua o uso de continue e break dentro dos loops.
     int i;
-    int const torre = 5, bispo = 5, rainha = 8; // Quantidade de casas por peça.
+    int const torre = 5, bispo = 5, rainha = 8, cavalo = 3; // Quantidade de casas por peça.
     printf("********** Movimentacao da Torre **********\n");
     for (i = 0; i < torre; i++)
     {
@@ -49,6 +49,20 @@ int main()
         printf("Esquerda\n");
         i++;
     } while (i < rainha);
+
+    printf("********** Movimentacao do Cavalo **********\n");
+
+    for (i = 0; i < cavalo; i++)
+    {
+        if (i <= 1)
+            printf("Baixo\n");
+
+        while (i == 1)
+        {
+            printf("Esquerda\n");
+            i++;
+        }
+    }
 
     return 0;
 }
