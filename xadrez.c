@@ -15,7 +15,7 @@ void mover_bispo(int casas)
 {
     if (casas > 0)
     {
-        for (int i = 0; i < 1; i++) // Corrigido para executar apenas uma vez
+        for (int i = 0; i < 1; i++)
         {
             printf("Cima\n");
             while (i == 0) // Mantém o loop enquanto i for 0
@@ -38,7 +38,7 @@ void mover_rainha(int casas)
 }
 void mover_cavalo(int casas)
 {
-    int movimentos_cima = 0; // Contador para controlar os movimentos para cima
+    int movimentos_cima = 0;
 
     while (casas > 0) // Controla o número de casas
     {
