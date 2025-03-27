@@ -3,7 +3,58 @@
 // Desafio de Xadrez - MateCheck
 // Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
 // O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
+void mover_torre(int casas)
+{
+    if (casas > 0)
+    {
+        printf("Direita\n");
+        mover_torre(casas - 1);
+    }
+}
+void mover_bispo(int casas)
+{
+    if (casas > 0)
+    {
+        for (int i = 0; i < 1; i++) // Corrigido para executar apenas uma vez
+        {
+            printf("Cima\n");
+            while (i == 0) // Mantém o loop enquanto i for 0
+            {
+                printf("Direita\n");
+                i++; // Incrementa i para sair do loop
+            }
+        }
+        mover_bispo(casas - 1);
+    }
+}
 
+void mover_rainha(int casas)
+{
+    if (casas > 0)
+    {
+        printf("Esquerda\n");
+        mover_rainha(casas - 1);
+    }
+}
+void mover_cavalo(int casas)
+{
+    int movimentos_cima = 0; // Contador para controlar os movimentos para cima
+
+    while (casas > 0) // Controla o número de casas
+    {
+        if (movimentos_cima < 2) // Sobe no máximo 2 vezes
+        {
+            printf("Cima\n");
+            movimentos_cima++;
+            casas--; // Reduz o número de casas restantes
+            continue;
+        }
+
+        printf("Direita\n"); // Após subir 2 vezes, vira para a direita
+        casas--;             // Reduz o número de casas restantes
+        break;               // Sai do loop após completar o movimento
+    }
+}
 int main()
 {
     // Nível Novato - Movimentação das Peças
@@ -31,38 +82,12 @@ int main()
     int i;
     int const torre = 5, bispo = 5, rainha = 8, cavalo = 3; // Quantidade de casas por peça.
     printf("********** Movimentacao da Torre **********\n");
-    for (i = 0; i < torre; i++)
-    {
-        printf("Direita\n");
-    }
-    i = 0; // Reseta variável de controle.
+    mover_torre(torre);
     printf("********** Movimentacao do Bispo **********\n");
-    while (i < bispo)
-    {
-        printf("Cima, Direita\n");
-        i++;
-    }
-    i = 0; // Reseta variável de controle.
+    mover_bispo(bispo);
     printf("********** Movimentacao da Rainha **********\n");
-    do
-    {
-        printf("Esquerda\n");
-        i++;
-    } while (i < rainha);
-
+    mover_rainha(rainha);
     printf("********** Movimentacao do Cavalo **********\n");
-
-    for (i = 0; i < cavalo; i++)
-    {
-        if (i <= 1)
-            printf("Baixo\n");
-
-        while (i == 1)
-        {
-            printf("Esquerda\n");
-            i++;
-        }
-    }
-
+    mover_cavalo(cavalo);
     return 0;
 }
